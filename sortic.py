@@ -14,3 +14,19 @@ def bsp_input():
         if i != ' ':
             a.append(int(i))
     return a
+
+
+def ft_len(lst):
+    lenn = 0
+    for i in lst:
+        lenn += 1
+    return lenn
+
+def sorted(a):
+    n = 1
+    while n < ft_len(a):
+        for i in range(ft_len(a) - n):
+            if a[i] > a[i + 1]:
+                a[i], a[i + 1] = a[i + 1], a[i]
+        n += 1
+    return a
