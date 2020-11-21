@@ -66,23 +66,32 @@ def ft_lshift(a):
 def sortic(a, a_sort):
     otv = []
     b = []
-    while b != a_sort[::-1]:
+    while b != a_sort[::-1] and ft_len(a) > 2:
         lenn = ft_len(a)
         minn, maxx = ft_min_max(a)
-        if a[0] == minn:
+        if a[0] == minn and lenn != 2:
             b = [a[0]] + b
             otv.append('pb')
             a1 = []
             for i in range(1, lenn):
                 a1.append(a[i])
             a = a1
-        elif a[-1] == minn:
+        elif a[-1] == minn and lenn != 2:
             a = ft_rshift_list(a)
             otv.append('rra')
         else:
             a = ft_lshift(a)
             otv.append('ra')
-    print(b)
+    if lenn == 2 and a[0] > a[1]:
+            otv.append('sa')
+            a[0], a[1] = a[1], a[0]
+    while a != a_sort:
+        a = [b[0]] + a
+        otv.append('pa')
+        b1 = []
+        for i in range(1, ft_len(b)):
+            b1.append(b[i])
+        b = b1
     return otv
 
 
