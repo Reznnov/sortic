@@ -7,6 +7,14 @@ def sp_input():
     return a
 
 
+def file_input():
+    f = open('input.txt')
+    a = []
+    for i in f:
+        a.append(int(i))
+    return(a)
+
+
 def bsp_input():
     c = input()
     a = []
@@ -82,17 +90,22 @@ def sortic(a, a_sort):
         else:
             a = ft_lshift(a)
             otv.append('ra')
+        print(f'a = {a}')
+        print(f'b = {b}')
+    lenn = ft_len(a)
     if lenn == 2 and a[0] > a[1]:
-            otv.append('sa')
-            a[0], a[1] = a[1], a[0]
+        otv.append('sa')
+        a[0], a[1] = a[1], a[0]
+        print(f'a = {a}')
+        print(f'b = {b}')
     while a != a_sort:
-        a = [b[0]] + a
-        otv.append('pa')
-        b1 = []
-        for i in range(1, ft_len(b)):
-            b1.append(b[i])
-        b = b1
+        if b != []:
+            a = [b[0]] + a
+            otv.append('pa')
+            b1 = []
+            for i in range(1, ft_len(b)):
+                b1.append(b[i])
+            b = b1
+        print(f'a = {a}')
+        print(f'b = {b}')
     return otv
-
-
-print(sortic([2, 4, 3, 1, 5, 6], sorted([2, 4, 3, 1, 5, 6])))
