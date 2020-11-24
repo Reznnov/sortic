@@ -1,3 +1,14 @@
+import sys
+
+def argum():
+    c = sys.argv[1]
+    a = []
+    for i in c:
+        if i != ' ':
+            a.append(int(i))
+    return a
+
+
 def sp_input():
     a = []
     c = input()
@@ -12,7 +23,7 @@ def file_input():
     a = []
     for i in f:
         a.append(int(i))
-    return(a)
+    return a
 
 
 def bsp_input():
@@ -109,3 +120,14 @@ def sortic(a, a_sort):
         print(f'a = {a}')
         print(f'b = {b}')
     return otv
+
+def file_output(a):
+    f = open('output.txt', 'w', encoding='utf8')
+    f.writelines(a[0])
+    for i in range(1, ft_len(a)):
+        f.writelines('\n')
+        f.writelines(a[i])
+    f.close()
+
+
+file_output(sortic(file_input(), sorted(file_input())))
