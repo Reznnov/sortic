@@ -8,14 +8,31 @@ def argum():
     for i in c:
         if i != ' ':
             a.append(int(i))
-    print(a)
     return a
 
+def all_input():
+    if ft_len(sys.argv) == 2:
+        a = []
+        c = sys.argv[1]
+        for i in c:
+            if i != ' ':
+                a.append(int(i))
+        return a
+    ab = file_input()
+    if ab != []:
+        otvet = []
+        for i in ab:
+            otvet.append(int(i))
+        return otvet
+    inputt = input()
+    if ' ' in inputt:
+        return bsp_input(inputt)
+    else:
+        return sp_input(inputt)
 
 
-def sp_input():
+def sp_input(c):
     a = []
-    c = input()
     while c != '!':
         a.append(int(c))
         c = input()
@@ -30,8 +47,7 @@ def file_input():
     return a
 
 
-def bsp_input():
-    c = input()
+def bsp_input(c):
     a = []
     for i in c:
         if i != ' ':
@@ -59,12 +75,13 @@ def ft_len(lst):
 
 def sorted(a):
     n = 1
-    while n < ft_len(a):
-        for i in range(ft_len(a) - n):
-            if a[i] > a[i + 1]:
-                a[i], a[i + 1] = a[i + 1], a[i]
+    spisok = a
+    while n < ft_len(spisok):
+        for i in range(ft_len(spisok) - n):
+            if spisok[i] > spisok[i + 1]:
+                spisok[i], spisok[i + 1] = spisok[i + 1], spisok[i]
         n += 1
-    return a
+    return spisok
 
 
 def ft_rshift_list(mass):
@@ -105,6 +122,7 @@ def sortic(a, a_sort):
         else:
             a = ft_lshift(a)
             otv.append('ra')
+        print(otv)
         print(f'a = {a}')
         print(f'b = {b}')
     lenn = ft_len(a)
@@ -133,8 +151,8 @@ def file_output(a):
         f.writelines(a[i])
     f.close()
 
-a = argum()
-ver = sortic(a, sorted(a))
+verf = all_input()
+ver = sortic(verf, sorted(verf))
 for i in ver:
     if i == 'pa':
         cprint(f'{i}', 'red')
@@ -158,4 +176,3 @@ for i in ver:
         cprint(f'{i}', 'grey')
     elif i == 'rrr':
         cprint(f'{i}', 'white')
-    
