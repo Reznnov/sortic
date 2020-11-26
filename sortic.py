@@ -10,7 +10,7 @@ def argum():
             a.append(int(i))
     return a
 
-def all_input():
+def all_input_str():
     if ft_len(sys.argv) == 2:
         a = []
         c = sys.argv[1]
@@ -19,17 +19,23 @@ def all_input():
                 a.append(int(i))
         return a
     ab = file_input()
-    if ab != []:
-        otvet = []
-        for i in ab:
-            otvet.append(int(i))
-        return otvet
+    if ab != '':
+        return ab
     inputt = input()
     if ' ' in inputt:
-        return bsp_input(inputt)
+        afg = ''
+        for i in inputt:
+            if i != ' ':
+                afg += i
+        return afg
     else:
-        return sp_input(inputt)
-
+        strtt = ''
+        strtt += inputt
+        while inputt != '!':
+            inputt = input()
+            strtt += inputt
+        return strtt
+        
 
 def sp_input(c):
     a = []
@@ -41,9 +47,9 @@ def sp_input(c):
 
 def file_input():
     f = open('input.txt')
-    a = []
+    a = ''
     for i in f:
-        a.append(int(i))
+        a += str(int(i))
     return a
 
 
@@ -73,7 +79,7 @@ def ft_len(lst):
     return lenn
 
 
-def sorted(a):
+def sorted1(a):
     n = 1
     spisok = a
     while n < ft_len(spisok):
@@ -106,6 +112,8 @@ def ft_lshift(a):
 def sortic(a, a_sort):
     otv = []
     b = []
+    print(f'a = {a}')
+    print(f'b = {b}')
     while b != a_sort[::-1] and ft_len(a) > 2:
         lenn = ft_len(a)
         minn, maxx = ft_min_max(a)
@@ -122,7 +130,6 @@ def sortic(a, a_sort):
         else:
             a = ft_lshift(a)
             otv.append('ra')
-        print(otv)
         print(f'a = {a}')
         print(f'b = {b}')
     lenn = ft_len(a)
@@ -151,8 +158,15 @@ def file_output(a):
         f.writelines(a[i])
     f.close()
 
-verf = all_input()
-ver = sortic(verf, sorted(verf))
+def str_to_lst(strr):
+    spisok11 = []
+    for i in strr:
+        spisok11.append(i)
+    return spisok11
+
+
+verf = all_input_str()
+ver = sortic(str_to_lst(verf), sorted1(str_to_lst(verf)))
 for i in ver:
     if i == 'pa':
         cprint(f'{i}', 'red')
