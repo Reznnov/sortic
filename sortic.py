@@ -1,12 +1,16 @@
 import sys
+from termcolor import colored, cprint
+
 
 def argum():
-    c = sys.argv[1]
     a = []
+    c = sys.argv
     for i in c:
-        if i != ' ':
+        if i != 'sortic.py':
             a.append(int(i))
+    print(a)
     return a
+
 
 
 def sp_input():
@@ -129,5 +133,10 @@ def file_output(a):
         f.writelines(a[i])
     f.close()
 
-
-file_output(sortic(file_input(), sorted(file_input())))
+a = argum()
+ver = sortic(a, sorted(a))
+for i in ver:
+    if i == 'pa':
+        cprint(f'{i}', 'red')
+    elif i == 'pb':
+        cprint(f'{i}', 'green')
