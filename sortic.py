@@ -4,9 +4,9 @@ from termcolor import colored, cprint
 
 def argum():
     a = []
-    c = sys.argv
+    c = sys.argv[1]
     for i in c:
-        if i != 'sortic.py':
+        if i != ' ':
             a.append(int(i))
     print(a)
     return a
@@ -140,3 +140,22 @@ for i in ver:
         cprint(f'{i}', 'red')
     elif i == 'pb':
         cprint(f'{i}', 'green')
+    elif i == 'sa':
+        cprint(f'{i}', 'yellow')
+    elif i == 'sb':
+        cprint(f'{i}', 'blue')
+    elif i == 'ss':
+        cprint(f'{i}', 'magenta')
+    elif i == 'ra':
+        cprint(f'{i}', 'cyan')
+    elif i == 'rb':
+        cprint(f'{i}', 'grey')
+    elif i == 'rr':
+        cprint(f'{i}', 'white')
+    elif i == 'rra':
+        cprint(f'{i}', 'cyan')
+    elif i == 'rrb':
+        cprint(f'{i}', 'grey')
+    elif i == 'rrr':
+        cprint(f'{i}', 'white')
+    
