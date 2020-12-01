@@ -10,31 +10,41 @@ def argum():
             a.append(int(i))
     return a
 
+def strr_(c):
+    snew = ''
+    l = ft_len(c)
+    if c[-1] == ' ' and c[-2] == '!':
+        for i in range(l - 2):
+            snew += c[i]
+    elif c[-1] == ' ':
+        for i in range(l - 1):
+            snew += c[i]
+    return snew
+
+
 def all_input_str():
     if ft_len(sys.argv) == 2:
-        a = []
-        c = sys.argv[1]
-        for i in c:
-            if i != ' ':
-                a.append(int(i))
-        return a
+        return strr_(sys.argv[1])[-1]
     ab = file_input()
     if ab != '':
-        return ab
+        c = ''
+        for i in ab:
+            c += i
+        return strr_(c)
     inputt = input()
     if ' ' in inputt:
         afg = ''
         for i in inputt:
             if i != ' ':
-                afg += i
-        return afg
+                afg += i + " "
+        return strr_(afg)
     else:
         strtt = ''
-        strtt += inputt
+        strtt += inputt + ' '
         while inputt != '!':
             inputt = input()
-            strtt += inputt
-        return strtt
+            strtt += inputt + " "
+        return strr_(strtt)
         
 
 def sp_input(c):
@@ -45,12 +55,36 @@ def sp_input(c):
     return a
 
 
-def file_input():
-    f = open('input.txt')
+def rem(strr):
+    ch = strr[-1] + strr[-2]
+    if ch == '\n':
+        otvet = ''
+        for i in range(ft_len(strr - 2)):
+            otvet += i
+        return otvet
+    return strr
+
+
+def ft_remove_str(str1, str2):
+    b = 0
     a = ''
-    for i in f:
-        a += str(int(i))
-    return a
+    for i in str1:
+        if i in str2:
+            b += 1
+        else:
+            a += i
+    if ft_len(str1) == b:
+        return False
+    else:
+        return a
+
+
+def file_input():
+    strrr = ''
+    with open('input.txt', 'r') as f:
+        for line in f:
+            strrr += ft_remove_str(line + ' ', '\n')
+    return strrr
 
 
 def bsp_input(c):
@@ -170,11 +204,38 @@ def file_output(a):
         f.writelines(a[i])
     f.close()
 
+
+def _strr(c):
+    fr = c
+    if c[0] == ' ':
+        fr = ''
+        for i in range(1, ft_len(c)):
+            fr += c[i]
+    return fr
+
 def str_to_lst(strr):
-    spisok11 = []
-    for i in strr:
-        spisok11.append(i)
-    return spisok11
+    cdf = ''
+    spp = []
+    sp2 = []
+    sp1 = []
+    l = ft_len(strr)
+    for i in range(l):
+        if strr[i] == ' ':
+            spp.append(i)
+    nac = 0
+    for i in spp:
+        cdf = ''
+        for j in range(nac, i):
+            cdf += strr[j]
+        nac = i
+        sp1.append(_strr(cdf))
+    cdf = ''
+    for i in range(spp[-1] + 1, ft_len(strr)):
+        cdf += strr[i]
+    sp1.append(cdf)
+    for i in sp1:
+        sp2.append(int(i))
+    return sp2
 
 
 verf = all_input_str()

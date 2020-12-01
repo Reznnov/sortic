@@ -1,18 +1,75 @@
+def ft_len(lst):
+    lenn = 0
+    for i in lst:
+        lenn += 1
+    return lenn
+
+
+def _strr(c):
+    fr = c
+    if c[0] == ' ':
+        fr = ''
+        for i in range(1, ft_len(c)):
+            fr += c[i]
+    return fr
+
+
+def strr_(c):
+    snew = ''
+    l = ft_len(c)
+    if c[-1] == ' ' and c[-2] == '!':
+        for i in range(l - 3):
+            snew += c[i]
+    elif c[-1] == ' ' and c[-2] == '*':
+        for i in range(l - 3):
+            snew += c[i]
+    elif c[-1] == ' ':
+        for i in range(l - 1):
+            snew += c[i]
+    return snew
+
+
+def all_input_str():
+    inputt = input()
+    strtt = ''
+    strtt += inputt + ' '
+    while inputt != '!':
+        inputt = input()
+        strtt += inputt + " "
+    inputt = input()
+    strtt1 = ''
+    strtt1 += inputt + ' '
+    while inputt != '*':
+        inputt = input()
+        strtt1 += inputt + " "
+    return strr_(strtt), strr_(strtt1)
+
+
 def inputt():
-    a = []
-    b = []
+    spisok = ''
+    sort = ''
     i = input()
     while i != '!':
-        a.append(int(i))
+        spisok += i
         i = input()
     i = input()
     while i != '*':
-        b.append(int(i))
+        sort += i
         i = input()
-    return a, b
+    return spisok, sort
+
+"""def str_to_lst(str1, str2):
+    spisok11 = []
+    spisok22 = []
+    for i in str1:
+        if i != ' ':
+            spisok11.append(int(i))
+    for i in str2:
+        spisok22.append(i)
+    return spisok11, spisok22"""
 
 
-def sorted(lst):
+def sorted1(lst):
     n = 1
     while n < ft_len(lst):
         for i in range(ft_len(lst) - n):
@@ -32,11 +89,54 @@ def ft_rshift_list(mass):
     return mass
 
 
-def ft_len(lst):
-    lenn = 0
-    for i in lst:
-        lenn += 1
-    return lenn
+def str_to_lst(strr):
+    cdf = ''
+    spp = []
+    sp2 = []
+    sp1 = []
+    l = ft_len(strr)
+    for i in range(l):
+        if strr[i] == ' ':
+            spp.append(i)
+    nac = 0
+    for i in spp:
+        cdf = ''
+        for j in range(nac, i):
+            cdf += strr[j]
+        nac = i
+        sp1.append(_strr(cdf))
+    cdf = ''
+    for i in range(spp[-1] + 1, ft_len(strr)):
+        cdf += strr[i]
+    sp1.append(cdf)
+    for i in sp1:
+        sp2.append(int(i))
+    return sp2
+
+
+def str_to_lst2(strr):
+    cdf = ''
+    spp = []
+    sp2 = []
+    sp1 = []
+    l = ft_len(strr)
+    for i in range(l):
+        if strr[i] == ' ':
+            spp.append(i)
+    nac = 0
+    for i in spp:
+        cdf = ''
+        for j in range(nac, i):
+            cdf += strr[j]
+        nac = i
+        sp1.append(_strr(cdf))
+    cdf = ''
+    for i in range(spp[-1] + 1, ft_len(strr)):
+        cdf += strr[i]
+    sp1.append(cdf)
+    for i in sp1:
+        sp2.append(i)
+    return sp2
 
 
 def ft_lshift(a):
@@ -50,10 +150,7 @@ def ft_lshift(a):
 
 def result(a, c):
     lst1 = a
-    #a_sort = sorted(a)
     b = []
-    #print(f'a = {a}')
-    #print(f'b = {b}')
     try:
         for i in c:
             if i == 'sa':
@@ -73,17 +170,17 @@ def result(a, c):
                 a1 = []
                 for i in range(1, lenn):
                     a1.append(a[i])
-                #print(a1)
                 a = a1
             elif i == 'rra':
                 a = ft_rshift_list(a)
-            #print(f'a = {a}')
-            #print(f'b = {b}')
     except:
         return False
-    if a == sorted(lst1):
+    if a == sorted1(lst1):
         return True
     else:
         return False
 
-print(result([2, 1, 3, 6, 5, 8], ['ra', 'pb', 'rra', 'pb', 'pb', 'ra', 'pb', 'sa', 'pa', 'pa', 'pa', 'pa']))    
+strr1, strr2 = all_input_str()
+sp1 = str_to_lst(strr1)
+sp2 = str_to_lst2(strr2)
+print(result(sp1, sp2))
