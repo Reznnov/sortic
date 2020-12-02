@@ -10,6 +10,7 @@ def argum():
             a.append(int(i))
     return a
 
+
 def strr_(c):
     snew = ''
     l = ft_len(c)
@@ -45,7 +46,7 @@ def all_input_str():
             inputt = input()
             strtt += inputt + " "
         return strr_(strtt)
-        
+
 
 def sp_input(c):
     a = []
@@ -212,6 +213,7 @@ def _strr(c):
         for i in range(1, ft_len(c)):
             fr += c[i]
     return fr
+
 
 def str_to_lst(strr):
     cdf = ''
