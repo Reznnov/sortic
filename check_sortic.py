@@ -149,12 +149,28 @@ def ft_lshift(a):
 
 
 def result(a, c):
+    Boll = True
     lst1 = a
     b = []
     try:
         for i in c:
             if i == 'sa':
                 a[0], a[1] = a[1], a[0]
+            elif i == 'sb':
+                b[0], b[1] = b[1], b[0]
+            elif i == 'ss':
+                a[0], a[1] = a[1], a[0]
+                b[0], b[1] = b[1], b[0]
+            elif i == 'rb':
+                b = ft_lshift(b)
+            elif i == 'rrb':
+                b = ft_rshift_list(b)
+            elif i == 'rr':
+                a = ft_lshift(a)
+                b = ft_lshift(b)
+            elif i == 'rrr':
+                a = ft_rshift_list(a)
+                b = ft_rshift_list(b)
             elif i == 'pa':
                 lenn = ft_len(b)
                 a = [b[0]] + a
