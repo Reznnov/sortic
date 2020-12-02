@@ -199,4 +199,7 @@ def result(a, c):
 strr1, strr2 = all_input_str()
 sp1 = str_to_lst(strr1)
 sp2 = str_to_lst2(strr2)
-print(result(sp1, sp2))
+if result(sp1, sp2):
+    print('OK')
+else:
+    print('KO')
