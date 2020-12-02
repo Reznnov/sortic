@@ -25,7 +25,7 @@ def strr_(c):
 
 def all_input_str():
     if ft_len(sys.argv) == 2:
-        return strr_(sys.argv[1])[-1]
+        return sys.argv[1]
     ab = file_input()
     if ab != '':
         c = ''
@@ -34,11 +34,7 @@ def all_input_str():
         return strr_(c)
     inputt = input()
     if ' ' in inputt:
-        afg = ''
-        for i in inputt:
-            if i != ' ':
-                afg += i + " "
-        return strr_(afg)
+        return inputt
     else:
         strtt = ''
         strtt += inputt + ' '
@@ -240,8 +236,22 @@ def str_to_lst(strr):
     return sp2
 
 
+def ft_split(stroka):
+    stroka += ' '
+    arg = ''
+    spisok = []
+    for i in stroka:
+        if i != ' ':
+            arg += i
+        else:
+            if arg != '':
+                spisok.append(int(arg))
+                arg = ''
+    return spisok
+
+
 verf = all_input_str()
-ver = sortic(str_to_lst(verf), sorted1(str_to_lst(verf)))
+ver = sortic(ft_split(verf), sorted1(ft_split(verf)))
 for i in ver:
     if i == 'pa':
         cprint(f'{i}', 'red')
