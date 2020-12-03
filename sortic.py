@@ -141,6 +141,9 @@ def ft_lshift(a):
 
 
 def sortic(a, a_sort):
+    if a == a_sort:
+        print(f'Список уже отсортирован {a}')
+        return False
     otv = []
     b = []
     print(f'a = {a}')
@@ -252,26 +255,27 @@ def ft_split(stroka):
 
 verf = all_input_str()
 ver = sortic(ft_split(verf), sorted1(ft_split(verf)))
-for i in ver:
-    if i == 'pa':
-        cprint(f'{i}', 'red')
-    elif i == 'pb':
-        cprint(f'{i}', 'green')
-    elif i == 'sa':
-        cprint(f'{i}', 'yellow')
-    elif i == 'sb':
-        cprint(f'{i}', 'blue')
-    elif i == 'ss':
-        cprint(f'{i}', 'magenta')
-    elif i == 'ra':
-        cprint(f'{i}', 'cyan')
-    elif i == 'rb':
-        cprint(f'{i}', 'grey')
-    elif i == 'rr':
-        cprint(f'{i}', 'white')
-    elif i == 'rra':
-        cprint(f'{i}', 'cyan')
-    elif i == 'rrb':
-        cprint(f'{i}', 'grey')
-    elif i == 'rrr':
-        cprint(f'{i}', 'white')
+if ver:
+    for i in ver:
+        if i == 'pa':
+            cprint(f'{i}', 'red')
+        elif i == 'pb':
+            cprint(f'{i}', 'green')
+        elif i == 'sa':
+            cprint(f'{i}', 'yellow')
+        elif i == 'sb':
+            cprint(f'{i}', 'blue')
+        elif i == 'ss':
+            cprint(f'{i}', 'magenta')
+        elif i == 'ra':
+            cprint(f'{i}', 'cyan')
+        elif i == 'rb':
+            cprint(f'{i}', 'grey')
+        elif i == 'rr':
+            cprint(f'{i}', 'white')
+        elif i == 'rra':
+            cprint(f'{i}', 'cyan')
+        elif i == 'rrb':
+            cprint(f'{i}', 'grey')
+        elif i == 'rrr':
+            cprint(f'{i}', 'white')
